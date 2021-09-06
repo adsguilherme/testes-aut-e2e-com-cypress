@@ -4,7 +4,7 @@ it('successfully signs up using confirmation code sent via email', () => {
   const password = Cypress.env('USER_PASSWORD')
 
   cy.intercept('GET', '**/notes').as('getNotes')
- 
+
   cy.fillSignupFormAndSubmit(emailAddress, password)
 
   cy.mailosaurGetMessage(Cypress.env('MAILOSAUR_SERVER_ID'), {
