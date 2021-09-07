@@ -1,51 +1,53 @@
-it('CRUDs a note', () => {
-  const faker = require('faker')
-  const noteDescription = faker.lorem.words(4)
-  let attachFile = false
-  // Foi utilizado let em vez de const, pois na linha 33 realizamos uma alteração de false para true
-  // false está indicando que não quero realizar o anexo
+// Esse arquivo teve a versão 2 e por fim ficou como authenticatedScenarios.spec.js
 
-  cy.intercept('GET', '**/notes').as('getNotes')
-  cy.intercept('GET', '**/notes/**').as('getNote')
-  cy.login()
+// it('CRUDs a note', () => {
+//   const faker = require('faker')
+//   const noteDescription = faker.lorem.words(4)
+//   let attachFile = false
+//   // Foi utilizado let em vez de const, pois na linha 33 realizamos uma alteração de false para true
+//   // false está indicando que não quero realizar o anexo
 
-  cy.visit('/notes/new')
-  cy.get('#content').type(noteDescription)
+//   cy.intercept('GET', '**/notes').as('getNotes')
+//   cy.intercept('GET', '**/notes/**').as('getNote')
+//   cy.login()
 
-  if (attachFile) { // Se (if) o atachfile for 'true', encontra o elemento para realizar o upload.
-    cy.get('#file').attachFile('example.json') // Neste caso irá pegar o arquivo example.json, que está na pasta fixture.
-  }
+//   cy.visit('/notes/new')
+//   cy.get('#content').type(noteDescription)
 
-  cy.contains('button', 'Create').click()
+//   if (attachFile) { // Se (if) o atachfile for 'true', encontra o elemento para realizar o upload.
+//     cy.get('#file').attachFile('example.json') // Neste caso irá pegar o arquivo example.json, que está na pasta fixture.
+//   }
 
-  cy.wait('@getNotes')
-  cy.contains('.list-group-item', noteDescription)
-    .should('be.visible')
-    .click()
-  cy.wait('@getNote')
+//   cy.contains('button', 'Create').click()
 
-  const updatedNoteDescription = faker.lorem.words(4)
+//   cy.wait('@getNotes')
+//   cy.contains('.list-group-item', noteDescription)
+//     .should('be.visible')
+//     .click()
+//   cy.wait('@getNote')
 
-  cy.get('#content')
-    .clear()
-    .type(updatedNoteDescription) // após o update será anexo o arquivo
+//   const updatedNoteDescription = faker.lorem.words(4)
 
-  attachFile = true
+//   cy.get('#content')
+//     .clear()
+//     .type(updatedNoteDescription) // após o update será anexo o arquivo
 
-  if (attachFile) {
-    cy.get('#file').attachFile('example.json')
-  }
+//   attachFile = true
 
-  cy.contains('button', 'Save').click()
-  cy.wait('@getNotes')
+//   if (attachFile) {
+//     cy.get('#file').attachFile('example.json')
+//   }
 
-  cy.contains('.list-group-item', noteDescription).should('not.exist')
-  cy.contains('.list-group-item', updatedNoteDescription)
-    .should('be.visible')
-    .click()
-  cy.wait('@getNote')
-  cy.contains('button', 'Delete').click()
-  cy.wait('@getNotes')
+//   cy.contains('button', 'Save').click()
+//   cy.wait('@getNotes')
 
-  cy.contains('.list-group-item', updatedNoteDescription).should('not.exist')
-})
+//   cy.contains('.list-group-item', noteDescription).should('not.exist')
+//   cy.contains('.list-group-item', updatedNoteDescription)
+//     .should('be.visible')
+//     .click()
+//   cy.wait('@getNote')
+//   cy.contains('button', 'Delete').click()
+//   cy.wait('@getNotes')
+
+//   cy.contains('.list-group-item', updatedNoteDescription).should('not.exist')
+// })

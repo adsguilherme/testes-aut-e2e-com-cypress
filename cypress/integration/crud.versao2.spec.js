@@ -1,19 +1,21 @@
-it('CRUDs a note', () => {
-  const faker = require('faker')
-  const noteDescription = faker.lorem.words(4)
+// Esse arquivo teve a versão 1 e 2, e por fim ficou como authenticatedScenarios.spec.js
 
-  cy.intercept('GET', '**/notes').as('getNotes')
-  cy.login()
+// it('CRUDs a note', () => {
+//   const faker = require('faker')
+//   const noteDescription = faker.lorem.words(4)
 
-  cy.createNote(noteDescription)
-  cy.wait('@getNotes')
+//   cy.intercept('GET', '**/notes').as('getNotes')
+//   cy.login()
 
-  const updatedNoteDescription = faker.lorem.words(4)
-  const attachFile = true
+//   cy.createNote(noteDescription)
+//   cy.wait('@getNotes')
 
-  cy.editNote(noteDescription, updatedNoteDescription, attachFile)
-  cy.wait('@getNotes')
+//   const updatedNoteDescription = faker.lorem.words(4)
+//   const attachFile = true
 
-  cy.deleteNote(updatedNoteDescription)
-  cy.wait('@getNotes')
-})
+//   cy.editNote(noteDescription, updatedNoteDescription, attachFile)
+//   cy.wait('@getNotes')
+
+//   cy.deleteNote(updatedNoteDescription)
+//   cy.wait('@getNotes')
+// })
