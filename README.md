@@ -2,9 +2,7 @@
 
 👋 Seja bem vindo(a)!
 
-É muito bom tê-lo(a) aqui. Tenho certeza que você vai adorar este curso de CY. ❤️
-
-## O que você vai aprender
+## O que você vai encontrar neste projeto
 
 Durante o curso de testes _end-to-end_ (e2e) com Cypress, você vai aprender:
 
@@ -30,6 +28,3 @@ Durante o curso de testes _end-to-end_ (e2e) com Cypress, você vai aprender:
 
 Vá para a seção de [pré-requisitos](./lessons/_pre-requirements_.md).
 
-___
-
-Um curso da [**Escola Talking About Testing**](https://udemy.com/user/walmyr).
