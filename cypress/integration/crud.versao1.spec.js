@@ -1,10 +1,10 @@
 it('CRUDs a note', () => {
   const faker = require('faker')
   const noteDescription = faker.lorem.words(4)
-  let attachFile = false 
+  let attachFile = false
   // Foi utilizado let em vez de const, pois na linha 33 realizamos uma alteração de false para true
   // false está indicando que não quero realizar o anexo
-  
+
   cy.intercept('GET', '**/notes').as('getNotes')
   cy.intercept('GET', '**/notes/**').as('getNote')
   cy.login()
