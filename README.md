@@ -1,3 +1,5 @@
+[![ci](https://github.com/adsguilherme/testes-aut-e2e-com-cypress/actions/workflows/ci.yml/badge.svg)](https://github.com/adsguilherme/testes-aut-e2e-com-cypress/actions/workflows/ci.yml)
+
 # Testes _end-to-end_ com Cypress
 
 👋 Seja bem vindo(a)!
