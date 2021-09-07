@@ -36,12 +36,12 @@ describe('Scenarios where authentication is a pre-requirement', () => {
     cy.visit('/')
     cy.wait('@getNotes')
 
-  // HACK - Se a configuração de largura do viewport, for menor que a largura definida no arquivo cypress.json, irá executar o código.   
-  if (Cypress.config('viewportWidth') < Cypress.env('viewportWidthBreakpoint')) {
-    cy.get('.navbar-toggle.collapsed')
-      .should('be.visible')
-      .click()
-  }
+    // HACK - Se a configuração de largura do viewport, for menor que a largura definida no arquivo cypress.json, irá executar o código.
+    if (Cypress.config('viewportWidth') < Cypress.env('viewportWidthBreakpoint')) {
+      cy.get('.navbar-toggle.collapsed')
+        .should('be.visible')
+        .click()
+    }
 
     /* ==== Generated with Cypress Studio ==== */
     cy.get('.nav > :nth-child(2) > a').click()
