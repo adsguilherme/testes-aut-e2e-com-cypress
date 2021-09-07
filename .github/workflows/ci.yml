@@ -1,0 +1,51 @@
+name: ci # nome do pipeline
+
+on: # esse pipeline vai ser disparado nos seguintes momentos
+  push:
+    branches:
+      - main # quando ouver um push para a branch main
+  pull_request: # quando ouver um PR
+
+jobs: # Esse pipeline possui 3 jobs (eslint, cypress-tests-desktop e cypress-tests-tablet)
+  eslint: # job 01 - eslint
+    runs-on: ubuntu-latest
+    steps: # Os passos
+    - uses: actions/checkout@v2
+    - name: Install modules # Nome do passo
+      run: npm install
+    - name: Run ESLint
+      run: npm run lint # Comando configurado no arquivo package.json
+
+  cypress-tests-desktop: # job 01 - cypress-tests-desktop
+    needs: eslint # Antes do job cypress-tests-desktop, precisa (needs) ser executado o job eslint
+    runs-on: ubuntu-latest
+    container: cypress/browsers:node12.18.3-chrome87-ff82 # Utilizar uma imagem de container com node, chrome e firefox
+    steps:
+      - name: Checkout # Baixar o código
+        uses: actions/checkout@v2
+
+      - name: Run end-to-end tests on desktop viewport 🧪
+        uses: cypress-io/github-action@v2
+        env: # Variáveis de ambiente
+          CYPRESS_USER_EMAIL: ${{ secrets.CYPRESS_USER_EMAIL }}
+          CYPRESS_USER_PASSWORD: ${{ secrets.CYPRESS_USER_PASSWORD }}
+          CYPRESS_MAILOSAUR_SERVER_ID: ${{ secrets.CYPRESS_MAILOSAUR_SERVER_ID }}
+          CYPRESS_MAILOSAUR_API_KEY: ${{ secrets.CYPRESS_MAILOSAUR_API_KEY }}
+        with:
+          command: npm test
+
+  cypress-tests-tablet: # job 03 - cypress-tests-tablet
+    needs: eslint
+    runs-on: ubuntu-latest
+    container: cypress/browsers:node12.18.3-chrome87-ff82
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Run end-to-end tests on tablet viewport 🧪
+        uses: cypress-io/github-action@v2
+        env:
+          CYPRESS_USER_EMAIL: ${{ secrets.CYPRESS_USER_EMAIL }}
+          CYPRESS_USER_PASSWORD: ${{ secrets.CYPRESS_USER_PASSWORD }}
+        with:
+          command: npm run test:tablet
