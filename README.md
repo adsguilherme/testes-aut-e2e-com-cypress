@@ -1,4 +1,5 @@
 [![ci](https://github.com/adsguilherme/testes-aut-e2e-com-cypress/actions/workflows/ci.yml/badge.svg)](https://github.com/adsguilherme/testes-aut-e2e-com-cypress/actions/workflows/ci.yml)
+[![testes-aut-e2e-com-cypress](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/niz11o&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/niz11o/runs)
 
 # Testes _end-to-end_ com Cypress
 
