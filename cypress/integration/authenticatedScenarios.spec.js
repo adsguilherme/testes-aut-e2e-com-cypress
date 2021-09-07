@@ -34,14 +34,15 @@ describe('Scenarios where authentication is a pre-requirement', () => {
 
   it('logs out', { tags: '@desktop-and-tablet' }, () => {
     cy.visit('/')
-    cy.wait('@getNotes')
+    //cy.wait('@getNotes')
+    cy.wait(2000) // Simulando falhas nas fases de lint e testes (linha 38 e da linha 41 a 45 foi comentado o código)
 
     // HACK - Se a configuração de largura do viewport, for menor que a largura definida no arquivo cypress.json, irá executar o código.
-    if (Cypress.config('viewportWidth') < Cypress.env('viewportWidthBreakpoint')) {
-      cy.get('.navbar-toggle.collapsed')
-        .should('be.visible')
-        .click()
-    }
+    // if (Cypress.config('viewportWidth') < Cypress.env('viewportWidthBreakpoint')) {
+    //   cy.get('.navbar-toggle.collapsed')
+    //     .should('be.visible')
+    //     .click()
+    // }
 
     /* ==== Generated with Cypress Studio ==== */
     cy.get('.nav > :nth-child(2) > a').click()
