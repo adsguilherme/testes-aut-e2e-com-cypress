@@ -1,7 +1,7 @@
 {
   "name": "testes-aut-e2e-com-cypress",
   "version": "1.0.0",
-  "description": "👋 Seja bem vindo(a)!",
+  "description": "Sample project to demonstrate e2e tests written with Cypress running on GitHub Actions",
   "main": "index.js",
   "scripts": {
     "lint": "eslint cypress/**/*.js",
